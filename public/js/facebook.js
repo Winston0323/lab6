@@ -1,7 +1,6 @@
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
-    changeUser(response);
   });
 }
 
@@ -19,8 +18,13 @@ function statusChangeCallback(response) {
   }
 }
 function changeUser(response){
+
   console.log("called");
-  $('.facebookLogin').find('p').hide();
-  $('#name').find('h1').text(response.name);
-  $('#photo').find('img').attr("src", response.picture.data.url);
+  var button = $('.facebookLogin');
+  button.hide();
+  var name = $('#name');
+  console.log("name is :" + name);
+  name.text(response.name);
+  var pic = $('#photo');
+  pic.attr("src", response.picture.data.url);
 }
